@@ -12,6 +12,7 @@ type Shoes struct {
 
 type Ambassador struct {
 	Type       string
+	Gender     string
 	CategoryId string
 	Profile    string
 }
@@ -53,6 +54,7 @@ func ExampleFormBuilder() {
 		Type:       "Running",
 		CategoryId: "2",
 		Profile:    "Hello, I am a runner",
+		Gender:     "2",
 	}
 
 	f := NewFormBuilder()
@@ -64,6 +66,14 @@ func ExampleFormBuilder() {
 		cats = append(cats, &Category{"2", "Cat2"})
 		return CategoryOptions(cats)
 	})
+
+	f.RadioButtons("Gender").Collection(func(fo FormObject, env Env) Options {
+		return StringOptions([][]string{
+			{"1", "Men"},
+			{"2", "Women"},
+		})
+	})
+
 	f.RichTextEditor("Profile").Label("The Ambassador Profile")
 	shc := f.CollectionEdit("Shoes")
 	shc.TextField("Name").Label("Your Name: ")

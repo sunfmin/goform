@@ -10,29 +10,43 @@ const defaultTemplates = `
 {{end}}
 
 {{define "TextField"}}
-	{{if .Label}}
+<div class="control-group">
 	<label class="control-label">{{.Label}}</label>
-	{{end}}
 	<div class="controls">
 	<input type="text" class="{{.Class}}" placeholder="{{.Placeholder}}" name="{{.Name}}" value="{{.Value}}" >
 	</div>
+</div>
 {{end}}
 
 {{define "Select"}}
-	{{if .Label}}
+<div class="control-group">
 	<label class="control-label">{{.Label}}</label>
-	{{end}}
 	<div class="controls">
 	<select name="{{.Name}}">
 		{{range .Options}}
 		<option value="{{.Value}}" checked="{{.Selected}}">{{.Label}}</option>{{end}}
 	</select>
 	</div>
+</div>
 {{end}}
 
 
 {{define "RichTextEditor"}}
 
+{{end}}
+
+{{define "RadioButtons"}}
+<div class="control-group">
+	<label class="control-label">{{.Label}}</label>
+	<div class="controls">
+		{{ $name := .Name}}
+		{{range .Options}}
+		<label class="radio inline">
+			<input type="radio" name="{{$name}}" value="{{.Value}}" checked="{{.Selected}}">{{.Label}}
+		</label>
+		{{end}}
+	</div>
+</div>
 {{end}}
 `
 

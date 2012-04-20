@@ -25,6 +25,20 @@ func (cs IntOptions) Len() int {
 	return len(cs)
 }
 
+type StringOptions [][]string
+
+func (cs StringOptions) Label(i int) string {
+	return cs[i][1]
+}
+
+func (cs StringOptions) Value(i int) string {
+	return cs[i][0]
+}
+
+func (cs StringOptions) Len() int {
+	return len(cs)
+}
+
 type optionvalue struct {
 	Label    string
 	Value    string
