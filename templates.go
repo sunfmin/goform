@@ -1,7 +1,7 @@
 package goform
 
 import (
-	"html/template"
+	"text/template"
 )
 
 const defaultTemplates = `
@@ -24,7 +24,7 @@ const defaultTemplates = `
 	<div class="controls">
 	<select name="{{.Name}}">
 		{{range .Options}}
-		<option value="{{.Value}}" checked="{{.Selected}}">{{.Label}}</option>{{end}}
+		<option value="{{.Value}}" {{.Checked}}>{{.Label}}</option>{{end}}
 	</select>
 	</div>
 </div>
@@ -42,7 +42,7 @@ const defaultTemplates = `
 		{{ $name := .Name}}
 		{{range .Options}}
 		<label class="radio inline">
-			<input type="radio" name="{{$name}}" value="{{.Value}}" checked="{{.Selected}}">{{.Label}}
+			<input type="radio" name="{{$name}}" value="{{.Value}}" {{.Checked}}>{{.Label}}
 		</label>
 		{{end}}
 	</div>

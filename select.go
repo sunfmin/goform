@@ -34,7 +34,7 @@ func (f *Select) Html(fo FormObject, env Env) string {
 	for i := 0; i < opts.Len(); i++ {
 		ov := &optionvalue{Label: opts.Label(i), Value: opts.Value(i)}
 		if ov.Value == fmt.Sprintf("%v", f.context.Value) {
-			ov.Selected = "true"
+			ov.Checked = "selected"
 		}
 		f.context.Options = append(f.context.Options, ov)
 	}

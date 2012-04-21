@@ -40,9 +40,9 @@ func (cs StringOptions) Len() int {
 }
 
 type optionvalue struct {
-	Label    string
-	Value    string
-	Selected string
+	Label   string
+	Value   string
+	Checked string
 }
 
 type OptionsRenderContext struct {

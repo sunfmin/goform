@@ -34,7 +34,7 @@ func (f *RadioButtons) Html(fo FormObject, env Env) string {
 	for i := 0; i < opts.Len(); i++ {
 		ov := &optionvalue{Label: opts.Label(i), Value: opts.Value(i)}
 		if ov.Value == fmt.Sprintf("%v", f.context.Value) {
-			ov.Selected = "true"
+			ov.Checked = "checked"
 		}
 		f.context.Options = append(f.context.Options, ov)
 	}

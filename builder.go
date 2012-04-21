@@ -3,6 +3,7 @@ package goform
 import (
 	"bytes"
 	. "github.com/paulbellamy/mango"
+	"html/template"
 )
 
 type Builder struct {
@@ -41,10 +42,12 @@ func NewFormBuilder() (b *Builder) {
 	return
 }
 
-func (b *Builder) Render(obj FormObject, env Env) string {
+func (b *Builder) Render(obj FormObject, env Env) (r template.HTML) {
 	buf := bytes.NewBufferString("")
+
 	for _, f := range b.Fields {
 		buf.WriteString(f.Htmlize.Html(obj, env))
 	}
-	return buf.String()
+	r = template.HTML(buf.String())
+	return
 }
